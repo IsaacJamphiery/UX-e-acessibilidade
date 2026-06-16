@@ -1,0 +1,413 @@
+<style>
+
+/* --- DESIGN ADAPTÁVEL E ACESSIBILIDADE --- */
+:root {
+    --bg-color: #f7f9fc;
+    --text-color: #1a202c;
+    --primary-color: #0056b3;
+    --secondary-color: #008080;
+    --accent-color: #d9534f;
+    --card-bg: #ffffff;
+    --border-radius: 12px;
+    --font-size-base: 18px;
+    /* Fonte maior por padrão para idosos */
+    --font-size-title: 32px;
+    --font-size-subtitle: 24px;
+}
+
+/* Classe de Alto Contraste (Ativada por JS) */
+body.high-contrast {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --primary-color: #ffff00;
+    --secondary-color: #00ffff;
+    --accent-color: #ff00ff;
+    --card-bg: #1e1e1e;
+}
+
+/* Classe para Fonte Grande (Ativada por JS) */
+body.large-text {
+    --font-size-base: 22px;
+    --font-size-title: 38px;
+    --font-size-subtitle: 28px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s, font-size 0.2s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    padding-bottom: 60px;
+}
+
+/* --- BARRA DE ACESSIBILIDADE --- */
+.accessibility-bar {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.accessibility-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.access-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.access-btn:hover,
+.access-btn:focus {
+    background-color: #ffffff;
+    color: #0056b3;
+    outline: 3px solid var(--secondary-color);
+}
+
+body.high-contrast .access-btn {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+body.high-contrast .access-btn:hover,
+body.high-contrast .access-btn:focus {
+    background-color: var(--primary-color);
+    color: #000000;
+}
+
+/* --- CABEÇALHO --- */
+header {
+    background-color: var(--card-bg);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--primary-color);
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+    font-size: var(--font-size-title);
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+header p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- SEÇÕES --- */
+section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: var(--font-size-subtitle);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-left: 6px solid var(--secondary-color);
+    padding-left: 15px;
+}
+
+/* --- GRID DE DICAS --- */
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.tip-card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+body.high-contrast .tip-card {
+    border: 2px solid #ffffff;
+}
+
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tip-icon {
+    font-size: 2.2rem;
+    background-color: rgba(0, 86, 179, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    min-height: 60px;
+}
+
+body.high-contrast .tip-icon {
+    background-color: #000000;
+    border: 1px solid var(--primary-color);
+}
+
+.tip-card h3 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.tip-card ul {
+    padding-left: 20px;
+}
+
+.tip-card li {
+    margin-bottom: 10px;
+}
+
+/* --- SIMULADOR DE GOLPES (QUIZ) --- */
+.simulator-box {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--primary-color);
+}
+
+.simulator-instructions {
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.sim-card {
+    background: #f1f3f5;
+    border-left: 5px solid #ffc107;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    color: #000000;
+    /* Sempre escuro para simular a tela do celular real */
+}
+
+.sim-header {
+    font-size: 0.9rem;
+    color: #555555;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.sim-message {
+    font-family: monospace;
+    font-size: 1.1rem;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    white-space: pre-line;
+    line-height: 1.4;
+}
+
+.choices-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.choice-btn {
+    flex: 1;
+    min-width: 200px;
+    padding: 18px;
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-safe {
+    background-color: #2e7d32;
+    color: #ffffff;
+}
+
+.btn-safe:hover,
+.btn-safe:focus {
+    background-color: #1b5e20;
+    outline: 3px solid #000000;
+}
+
+.btn-danger {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: #b30000;
+    outline: 3px solid #000000;
+}
+
+/* --- ÁREA DE FEEDBACK --- */
+.feedback-area {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    display: none;
+    font-weight: bold;
+}
+
+.feedback-correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 2px solid #c3e6cb;
+}
+
+.feedback-wrong {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+}
+
+body.high-contrast .feedback-correct {
+    background-color: #000000;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+}
+
+body.high-contrast .feedback-wrong {
+    background-color: #000000;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+}
+
+/* --- BOTÃO DE PRÓXIMA PERGUNTA --- */
+.next-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    display: none;
+}
+
+.next-btn:hover {
+    opacity: 0.9;
+}
+
+/* --- SEÇÃO DE AJUDA RÁPIDA --- */
+.emergency-box {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 3px solid #ffeeba;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.high-contrast .emergency-box {
+    background-color: #1e1e1e;
+    color: #ffff00;
+    border: 3px solid #ffff00;
+}
+
+.emergency-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.emergency-list {
+    padding-left: 20px;
+}
+
+.emergency-list li {
+    margin-bottom: 12px;
+}
+
+/* --- RODAPÉ --- */
+footer {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .accessibility-bar {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .choices-container {
+        flex-direction: column;
+    }
+
+    .choice-btn {
+        width: 100%;
+    }
+}
+
+</style>

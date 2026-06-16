@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Digital Seguro - Segurança para Idosos</title>
+</head>
+    <link rel="stylesheet" href="style.css"
+<body>
+
+    <!-- BARRA DE ACESSIBILIDADE STICKY -->
+    <div class="accessibility-bar" role="toolbar" aria-label="Ajustes de Acessibilidade">
+        <span class="accessibility-title" id="accessibility-instructions">Ferramentas de Acessibilidade:</span>
+        <div class="btn-group">
+            <button class="access-btn" onclick="toggleContrast()"
+                aria-label="Alternar modo de alto contraste para melhor leitura">
+                🌓 Contraste
+            </button>
+            <button class="access-btn" onclick="toggleTextSize()"
+                aria-label="Aumentar ou diminuir o tamanho dos textos">
+                🔎 Tamanho do Texto
+            </button>
+            <button class="access-btn" onclick="readAloud()" id="read-btn"
+                aria-label="Ouvir as informações da página em voz alta">
+                🔊 Ouvir Página
+            </button>
+        </div>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header role="banner">
+        <h1>Guia Digital Seguro</h1>
+        <p>Aprenda a navegar na internet com tranquilidade, conheça os golpes mais comuns e descubra como proteger seus
+            dados.</p>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main role="main">
+
+        <!-- DICAS DE SEGURANÇA -->
+        <section id="dicas" aria-labelledby="titulo-dicas">
+            <h2 class="section-title" id="titulo-dicas">1. Dicas Importantes de Segurança</h2>
+
+            <div class="tips-grid">
+
+                <!-- CARTÃO 1 -->
+                <article class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon" aria-hidden="true">🔑</div>
+                        <h3>Cuidado com Senhas</h3>
+                    </div>
+                    <ul>
+                        <li><strong>Evite o óbvio:</strong> Não use sua data de nascimento, nome de parentes ou números
+                            sequenciais como "123456".</li>
+                        <li><strong>Anote em local seguro:</strong> Se preferir anotar, guarde o papel em uma gaveta
+                            trancada, nunca colado no computador.</li>
+                        <li><strong>Código de Ativação:</strong> Nunca envie códigos numéricos recebidos por SMS para
+                            ninguém.</li>
+                    </ul>
+                </article>
+
+                <!-- CARTÃO 2 -->
+                <article class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon" aria-hidden="true">💬</div>
+                        <h3>Mensagens Suspeitas</h3>
+                    </div>
+                    <ul>
+                        <li><strong>Promoções milagrosas:</strong> Desconfie de prêmios que você não se cadastrou para
+                            receber ou descontos gigantescos.</li>
+                        <li><strong>Ajuda a parentes:</strong> Se um filho ou neto pedir dinheiro de um número novo,
+                            ligue para o número antigo dele para confirmar.</li>
+                        <li><strong>Urgência exagerada:</strong> Mensagens dizendo "Sua conta será bloqueada hoje"
+                            geralmente são golpes.</li>
+                    </ul>
+                </article>
+
+                <!-- CARTÃO 3 -->
+                <article class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon" aria-hidden="true">📞</div>
+                        <h3>Ligações do "Banco"</h3>
+                    </div>
+                    <ul>
+                        <li><strong>Eles já sabem seus dados:</strong> Golpistas conseguem informações reais para fingir
+                            que são funcionários verdadeiros.</li>
+                        <li><strong>Nunca faça transferências:</strong> Bancos de verdade nunca pedem para você fazer um
+                            PIX para "salvar" sua conta.</li>
+                        <li><strong>Desligue e ligue de volta:</strong> Na dúvida, desligue e ligue no número que está
+                            atrás do seu cartão físico.</li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SIMULADOR DE GOLPES (QUIZ INTERATIVO) -->
+        <section id="simulador" aria-labelledby="titulo-simulador">
+            <h2 class="section-title" id="titulo-simulador">2. Simulador: É Seguro ou é Golpe?</h2>
+
+            <div class="simulator-box">
+                <p class="simulator-instructions">
+                    Olhe a mensagem abaixo como se ela estivesse na tela do seu telefone. Pense bem e decida se ela é
+                    segura ou se é um golpe.
+                </p>
+
+                <!-- Tela simulada do celular -->
+                <div class="sim-card" id="quiz-card" aria-live="polite">
+                    <div class="sim-header">
+                        <span id="quiz-sender">💬 Remetente Desconhecido</span>
+                        <span>Agora mesmo</span>
+                    </div>
+                    <div class="sim-message" id="quiz-message">
+                        Carregando simulação...
+                    </div>
+                </div>
+
+                <!-- Botões de Escolha -->
+                <div class="choices-container">
+                    <button class="choice-btn btn-danger" onclick="checkAnswer('golpe')"
+                        aria-label="Responder que esta mensagem é um golpe">
+                        ⚠️ Isto é um GOLPE!
+                    </button>
+                    <button class="choice-btn btn-safe" onclick="checkAnswer('seguro')"
+                        aria-label="Responder que esta mensagem é segura">
+                        ✅ É Seguro Confiar
+                    </button>
+                </div>
+
+                <!-- Área de Resposta/Feedback -->
+                <div id="feedback" class="feedback-area" role="alert">
+                    <p id="feedback-text"></p>
+                    <button id="next-btn" class="next-btn" onclick="nextQuestion()">Próximo Desafio ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- AJUDA RÁPIDA -->
+        <section id="ajuda" aria-labelledby="titulo-ajuda">
+            <div class="emergency-box">
+                <h3 id="titulo-ajuda">🚨 Desconfiou ou Caiu em um Golpe? O que fazer:</h3>
+                <ul class="emergency-list">
+                    <li><strong>Ligue imediatamente para o seu banco:</strong> Avise sobre qualquer transação suspeita
+                        para que eles tentem bloquear o valor.</li>
+                    <li><strong>Avise as pessoas próximas:</strong> Diga a parentes ou vizinhos que você pode ter sido
+                        vítima para que eles ajudem a monitorar suas contas.</li>
+                    <li><strong>Faça um Boletim de Ocorrência (B.O.):</strong> Pode ser feito pela internet ou na
+                        delegacia mais próxima para sua segurança jurídica.</li>
+                    <li><strong>Não apague as mensagens:</strong> Guarde as capturas de tela e os comprovantes; eles
+                        servem como prova para a polícia.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer role="contentinfo">
+        <p><strong>Guia Digital Seguro</strong> - Criado com carinho para proteger quem nos ensinou tanto.</p>
+        <p>Lembre-se: Na internet, ter pressa é perigoso. Se estiver na dúvida, pergunte a alguém de confiança!</p>
+    </footer>
+
+    <!-- LÓGICA DO SIMULADOR E ACESSIBILIDADE -->
+    <script>
+        // --- 1. CONFIGURAÇÕES DE ACESSIBILIDADE ---
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+            // Salva a preferência
+            const isHigh = document.body.classList.contains('high-contrast');
+            localStorage.setItem('high-contrast', isHigh);
+        }
+
+        function toggleTextSize() {
+            document.body.classList.toggle('large-text');
+            // Salva a preferência
+            const isLarge = document.body.classList.contains('large-text');
+            localStorage.setItem('large-text', isLarge);
+        }
+
+        // Leitura de Tela nativa simplificada
+        let speechSynth = window.speechSynthesis;
+        let speaking = false;
+
+        function readAloud() {
+            if (!speechSynth) {
+                alert("Desculpe, seu navegador não suporta leitura de tela automática.");
+                return;
+            }
+
+            if (speaking) {
+                speechSynth.cancel();
+                speaking = false;
+                document.getElementById('read-btn').innerHTML = "🔊 Ouvir Página";
+                return;
+            }
+
+            // Seleciona textos importantes da página
+            const textToRead = `
+                Guia Digital Seguro. Segurança para Idosos.
+                Aprenda a navegar na internet com tranquilidade, conheça os golpes mais comuns e descubra como proteger seus dados.
+                Seção um: Dicas importantes de segurança.
+                Cuidado com Senhas: Evite o óbvio, anote em local seguro, nunca compartilhe códigos numéricos de SMS.
+                Mensagens suspeitas: Desconfie de prêmios milagrosos, confirme pedidos de ajuda financeira por ligação telefônica tradicional, recuse urgências exageradas.
+                Ligações de banco: Golpistas conseguem dados reais para fingirem ser funcionários, nunca faça transferências de emergência, sempre ligue para o telefone atrás do seu cartão físico.
+                Seção dois: Simulador é seguro ou é golpe? Veja as mensagens exibidas na tela e avalie com cuidado.
+            `;
+
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'pt-BR';
+            utterance.rate = 0.9; // Leitura um pouco mais lenta para idosos
+
+            utterance.onend = function () {
+                speaking = false;
+                document.getElementById('read-btn').innerHTML = "🔊 Ouvir Página";
+            };
+
+            speaking = true;
+            document.getElementById('read-btn').innerHTML = "⏹️ Parar Leitura";
+            speechSynth.speak(utterance);
+        }
+
+        // Carrega preferências salvas
+        window.onload = function () {
+            if (localStorage.getItem('high-contrast') === 'true') {
+                document.body.classList.add('high-contrast');
+            }
+            if (localStorage.getItem('large-text') === 'true') {
+                document.body.classList.add('large-text');
+            }
+            // Inicia o simulador
+            loadQuestion();
+        }
+
+
+        // --- 2. DADOS DO SIMULADOR (QUESTÕES) ---
+        const questions = [
+            {
+                sender: "💬 Número Desconhecido (WhatsApp)",
+                message: "Mãe, mudei de celular! Este é meu número novo. Por favor, anota aí. Pode me fazer um PIX urgente de R$ 450 para pagar uma conta hoje? Meu aplicativo do banco não está funcionando nesse celular novo.",
+                type: "golpe",
+                explanation: "⚠️ GOLPE! Parentes fingindo mudar de número e pedindo dinheiro imediatamente é um golpe muito comum. Nunca envie dinheiro sem antes ligar para o número antigo do seu parente e falar de viva voz com ele!"
+            },
+            {
+                sender: "🏢 Banco do Brasil (Notificação)",
+                message: "Atenção: Sua conta bancária foi bloqueada por motivos de segurança. Para recuperar o seu acesso agora mesmo, clique no link abaixo e digite sua senha de 6 dígitos: \n👉 www.seguro-banco-atualizar.com",
+                type: "golpe",
+                explanation: "⚠️ GOLPE! Bancos reais nunca enviam links pedindo para você digitar suas senhas pessoais. Além disso, note que o endereço do site (link) é estranho e não é o site oficial do banco."
+            },
+            {
+                sender: "💬 Seu Filho ou Neto Real",
+                message: "Oi, tudo bem? Hoje vou passar aí na sua casa para jantar por volta das 19h. Você precisa que eu compre alguma coisa no mercado no caminho? Me avisa aqui.",
+                type: "seguro",
+                explanation: "✅ SEGURO! Essa é uma mensagem comum de família. Não há pedidos de urgência, não há links para clicar e nenhum código secreto ou dinheiro foi solicitado."
+            },
+            {
+                sender: "💬 Número Desconhecido (SMS)",
+                message: "PARABÉNS! Você foi o grande sorteado do prêmio de R$ 10.000,00 da nossa promoção especial de aniversário! Para receber o dinheiro na sua conta hoje mesmo, responda essa mensagem enviando o código que acabou de chegar por SMS no seu celular.",
+                type: "golpe",
+                explanation: "⚠️ GOLPE! Ninguém dá prêmios de surpresa sem você ter se inscrito. Além disso, o 'código por SMS' que eles pedem é um código de segurança que permite aos golpistas roubarem o seu aplicativo ou o seu celular."
+            },
+            {
+                sender: "✉️ Agendamento do Posto de Saúde",
+                message: "Prezado(a) paciente, informamos que sua consulta médica anual está agendada para a próxima quinta-feira, às 14:00, na Unidade de Saúde do Bairro. Por favor, traga seus exames recentes e documento de identidade.",
+                type: "seguro",
+                explanation: "✅ SEGURO! Mensagens informativas que não solicitam senhas, não exigem pagamentos imediatos nem pedem dados pessoais são seguras. Na dúvida, você sempre pode ligar diretamente para o posto de saúde para confirmar."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            // Limpa o feedback
+            const feedbackArea = document.getElementById('feedback');
+            feedbackArea.style.display = 'none';
+            feedbackArea.className = 'feedback-area';
+            document.getElementById('next-btn').style.display = 'none';
+
+            // Carrega os dados da questão atual
+            const currentQuestion = questions[currentQuestionIndex];
+            document.getElementById('quiz-sender').textContent = currentQuestion.sender;
+            document.getElementById('quiz-message').textContent = currentQuestion.message;
+        }
+
+        function checkAnswer(userChoice) {
+            const currentQuestion = questions[currentQuestionIndex];
+            const feedbackArea = document.getElementById('feedback');
+            const feedbackText = document.getElementById('feedback-text');
+            const nextBtn = document.getElementById('next-btn');
+
+            feedbackArea.style.display = 'block';
+
+            if (userChoice === currentQuestion.type) {
+                feedbackArea.classList.add('feedback-correct');
+                feedbackText.innerHTML = "🎯 PARABÉNS, VOCÊ ACERTOU!<br><br>" + currentQuestion.explanation;
+            } else {
+                feedbackArea.classList.add('feedback-wrong');
+                feedbackText.innerHTML = "❌ ATENÇÃO:<br><br>" + currentQuestion.explanation;
+            }
+
+            // Habilita o botão para ir para a próxima pergunta
+            nextBtn.style.display = 'inline-block';
+            nextBtn.focus();
+        }
+
+        function nextQuestion() {
+            // Avança para a próxima pergunta de forma circular
+            currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+            loadQuestion();
+        }
+    </script>
+</body>
+
+</html>
